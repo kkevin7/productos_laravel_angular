@@ -18,4 +18,9 @@ class ApiProducto extends Controller
         $producto->save();
         return new ProductoResource($producto);
     }
+
+    public function show(){
+        $producto = ProductoModel::all();
+        return ProductoResource::collection($producto);
+    }
 }
