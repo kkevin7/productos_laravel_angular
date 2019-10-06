@@ -66,4 +66,19 @@ class ApiProducto extends Controller
         }
     }
 
+    public function delete($id){
+        if(!empty(trim($id))){
+            $producto = ProductoModel::find($id);
+            if($producto){
+                $producto->delete();
+                return response()->json(array('msg' => "The record was deleted",
+                                'data' => $producto), 200);
+            }else{
+                return response()->json(array('error' => "The record doesn't exist"),404);
+            }
+        }else{
+            return response()->json(array('error' => "This can´t be empty"),400);
+        }
+    }
+
 }
