@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProductoModel;
 use Illuminate\Http\Request;
+use App\Http\Resources\Producto as ProductoResource;
 
 class ApiProducto extends Controller
 {
@@ -15,6 +16,6 @@ class ApiProducto extends Controller
         $producto->precio = $request->input('precio');
         
         $producto->save();
-        return ProductoModel::collection($producto);
+        return new ProductoResource($producto);
     }
 }
