@@ -23,4 +23,16 @@ class ApiProducto extends Controller
         $producto = ProductoModel::all();
         return ProductoResource::collection($producto);
     }
+
+    public function showById($id){
+        $producto = ProductoModel::find($id);
+        if($producto){
+            return new ProductoResource($producto);
+        }else{
+            return response()->json(array('Error' => "Doesn´t found the record, is posible that no exist the ID ".$id), 404);
+        }
+    }
+
+
+
 }
