@@ -8,5 +8,5 @@ class ProductoModel extends Model
 {
     //
     protected $table = 'producto';
-    protected $filltable = ['nombre','cantidad','precio'];
+    protected $filltable = ['nombre','cantidad','precio','estado'];
 }
